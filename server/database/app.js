@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = 3030;
 
-// Middleware setup
+// Setup middleware
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -31,11 +31,12 @@ try {
     Dealerships.deleteMany({}).then(() => {
         Dealerships.insertMany(dealerships_data['dealerships']);
     });
+
 } catch (error) {
     console.error('Error populating database', error);
 }
 
-// Root route
+// Express route to home
 app.get('/', async (req, res) => {
     res.send("Welcome to the Mongoose API");
 });
@@ -95,7 +96,7 @@ app.get('/fetchDealer/:id', async (req, res) => {
     }
 });
 
-// Route to insert a new review
+// Insert a new review
 app.post('/insert_review', async (req, res) => {
     const data = req.body;
     const documents = await Reviews.find().sort({ id: -1 });
@@ -122,7 +123,7 @@ app.post('/insert_review', async (req, res) => {
     }
 });
 
-// Start the server
+// Start the Express server
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
