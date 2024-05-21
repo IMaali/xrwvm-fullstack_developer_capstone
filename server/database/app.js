@@ -83,19 +83,26 @@ app.get('/fetchDealers/:state', async (req, res) => {
 });
 
 // Fetch dealership by ID
+// app.get('/fetchDealer/:id', async (req, res) => {
+//     try {
+//         const dealership = await Dealerships.findById(req.params.id);
+//         if (dealership) {
+//             res.json(dealership);
+//         } else {
+//             res.status(404).json({ error: 'Dealer not found' });
+//         }
+//     } catch (error) {
+//         res.status(500).json({ error: 'Error fetching dealer by ID' });
+//     }
+// });
 app.get('/fetchDealer/:id', async (req, res) => {
     try {
-        const dealership = await Dealerships.findById(req.params.id);
-        if (dealership) {
-            res.json(dealership);
-        } else {
-            res.status(404).json({ error: 'Dealer not found' });
-        }
+        const documents = await Reviews.find({ id: req.params.id });
+        res.json(documents);
     } catch (error) {
-        res.status(500).json({ error: 'Error fetching dealer by ID' });
+        res.status(500).json({ error: 'Error fetching documents' });
     }
 });
-
 // Insert a new review
 app.post('/insert_review', async (req, res) => {
     const data = req.body;
