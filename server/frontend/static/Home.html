@@ -1,36 +1,13 @@
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home - DealerShips</title>
-        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-        <style>
-            .active-nav {
-                color: #fcd34d; 
-            }
-            .homepage_links {
-            color: #fff; 
-            margin-right: 10px;
-        }
-    
-         .loginlink {
-            display: flex;
-            align-items: center;
-        }
-        .loginlink > * {
-         /*   margin-left: 5px;*/
-        }
-        .nav-divider {
-            border-left: 1px solid #fff;
-            height: 20px; 
-            margin: 0 10px; 
-        }
-        </style>
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="static/style.css">
+  <link rel="stylesheet" href="static/bootstrap.min.css">
 <script>
 
 const logout = async (e) => {
-//Include the code for logout here.
-let logout_url = window.location.origin+"/djangoapp/logout";
+    let logout_url = window.location.origin+"/djangoapp/logout";
   const res = await fetch(logout_url, {
     method: "GET",
   });
@@ -48,38 +25,55 @@ let logout_url = window.location.origin+"/djangoapp/logout";
   }
 };
 
-let checkSession = () => {
-            let curr_user = sessionStorage.getItem("username");
+let checkSession = ()=>{
+  let curr_user = sessionStorage.getItem("username");
 
-            if (curr_user && curr_user !== "") {
-                document.getElementById("loginlogout").innerHTML = 
-                '<span class="homepage_links">' + curr_user +'</span>' +
-                '<a class="homepage_links" onclick="logout()" href="/">Logout</a>';
-            } else {
-                document.getElementById("loginlogout").innerHTML = 
-                '<a class="homepage_links text-white px-4" href="/login">Login</a>'+
-                '<a class="homepage_links text-white px-4"  href="/register">Register</a>';
-            }
-        }
+  if (curr_user && curr_user !== "") {
+    document.getElementById("loginlogout").innerHTML = 
+    '<span class="homepage_links">' + curr_user +'</span>' +
+    '<a class="homepage_links" onclick="logout()" href="/">Logout</a>'
+  } else {
+    document.getElementById("loginlogout").innerHTML = 
+    '<a class="homepage_links" href="/login">Login</a>'+
+    '<a class="homepage_links"  href="/register">Register</a>'
+  }
+ }
 </script>
 </head>
-<body onload="checkSession()" class="bg-gray-100">
-    <header class="bg-blue-900 text-white p-4">
-        <nav class="max-w-6xl mx-auto flex justify-between items-center">
-            <div class="text-xl font-bold">DealerShips</div>
-            <div class="ml-auto flex items-center">
-                <a href="#" class="text-white px-4 active-nav">Home</a>
-                <a href="/about" class="text-white px-4">About Us</a>
-                <a href="/contact" class="text-white px-4">Contact Us</a>
-                <div class="nav-divider"></div> 
-                <div id="loginlogout" class="loginlink"></div> 
-            </div>
-        </nav>
-    </header>
-    <main class="max-w-6xl mx-auto mt-8 p-4 bg-white rounded shadow-lg">
-        <h1 class="text-2xl font-semibold mb-4">Welcome to Best Cars dealership, home to the best cars in North America.</h1>
-        <p>We deal in sale of domestic and imported cars at reasonable prices.</p>
-        <a href="/dealers"><button class="bg-blue-900 text-white px-4 py-2 rounded-md mt-4">View Dealerships</button></a>
-    </main>
+<body onload="checkSession()">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color:darkturquoise; height: 1in;">
+  <div class="container-fluid">
+    <h2 style="padding-right: 5%;">Dealerships</h2>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" style="font-size: larger;" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="font-size: larger;" href="/about">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="font-size: larger;" href="/contact">Contact Us</a>
+        </li>
+      </ul>
+      <span class="navbar-text">
+        <div class="loginlink" id="loginlogout">
+        </div>
+        </span>
+    </div>
+  </div>
+</nav>
+<div style="display: flex;flex-direction: column;">
+<div class="card" style="width: 50%;margin-top: 50px;align-self: center;">
+  <img src="static/car_dealership.jpg" class="card-img-top" alt="...">
+  <div class="banner">
+    <h5>Welcome to our Dealerships!</h5>
+    <a href="/dealers" class="btn" style="background-color: aqua;margin:10px">View Dealerships</a>
+  </div>
+</div>
+</div>
 </body>
 </html>

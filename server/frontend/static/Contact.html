@@ -1,46 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Contact Us - DealerShips</title>
-        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-        <style>
-            .active-nav {
-                color: #fcd34d;
-            }
-        </style>
-    </head>
-    <body class="bg-gray-100">
-        <header class="bg-blue-900 text-white p-4">
-            <nav class="max-w-6xl mx-auto flex justify-between items-center">
-                <div class="text-xl font-bold">DealerShips</div>
-                <div>
-                    <a href="/" class="text-white px-4">Home</a>
-                    <a href="/about" class="text-white px-4">About Us</a>
-                    <a href="/contact" class="text-white px-4 active-nav">Contact Us</a>
-                </div>
-            </nav>
-        </header>
-    <main class="max-w-4xl mx-auto mt-8 p-4 bg-white rounded shadow-lg">
-        <h2 class="text-xl font-semibold mb-4">Contact Us</h2>
-        <form action="#" method="post" class="space-y-6">
-            <div>
-                <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-                <input type="text" id="name" name="name" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required>
+<html>
+<head>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+</head>
+<div>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:darkturquoise; height: 1in;">
+    <div class="container-fluid">
+      <h2 style="padding-right: 5%;">Dealerships</h2>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" style="font-size: larger;" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " style="font-size: larger;" href="/about">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" style="font-size: larger;" href="/contact">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+    <div class="card" style="width:60%;margin: auto; margin-top:5%;">
+      <div class="banner" name="about-header">
+        <br>
+        <!-- <h1>Contact Us </h1> -->
+      </div>
+      <div style="display: flex;flex-direction: row; margin:auto">
+   
+        <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Contact Us</h5>
+                <p lass="card-text"> Email our Customer Service at <a href="mailto:support@bestcars.com">support@bestcars.com</a></p>
+                <p class="card-text">Reach our National Advertising Team at <a href="mailto:NationalSales@bestcars.com">NationalSales@bestcars.com</a></p>
+                <p class="card-text">Contact our Public Relations at <a href="mailto:PR@bestcars.com">PR@bestcars.com</a></p>
+                <p class="card-text">Corporate Office: 312-611-1111</p>
+                <p class="card-text"><a href="http://www.growthwithbestcars.com">Visit our website</a> to learn more</p>
+                <p class="card-text">Interested in becoming a dealer? <a href="mailto:dealer@bestcars.com">Contact us</a></p>
+           
+              <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
             </div>
-            <div>
-                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                <input type="email" id="email" name="email" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required>
-            </div>
-            <div>
-                <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-                <textarea id="message" name="message" rows="4" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required></textarea>
-            </div>
-            <div>
-                <button type="submit" class="w-full bg-blue-900 text-white p-2 rounded-md hover:bg-blue-800">Send Message</button>
-            </div>
-        </form>
-    </main>
-</body>
+            <img src="/static/con.jpg"  alt="..." >
+          </div>
+          
+          
+    
+
+   
+    </div>
+    <br>
+    </div>
+    </div>
+    
+</div>
+
 </html>
