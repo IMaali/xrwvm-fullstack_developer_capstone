@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home - DealerShips</title>
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+        <style>
+            .active-nav {
+                color: #fcd34d; 
+            }
+            .homepage_links {
+            color: #fff; 
+            margin-right: 10px;
+        }
+    
+         .loginlink {
+            display: flex;
+            align-items: center;
+        }
+        .loginlink > * {
+         /*   margin-left: 5px;*/
+        }
+        .nav-divider {
+            border-left: 1px solid #fff;
+            height: 20px; 
+            margin: 0 10px; 
+        }
+        </style>
+<script>
+
+const logout = async (e) => {
+//Include the code for logout here.
+let logout_url = window.location.origin+"/djangoapp/logout";
+  const res = await fetch(logout_url, {
+    method: "GET",
+  });
+
+  const json = await res.json();
+  if (json) {
+    let username = sessionStorage.getItem('username');
+    sessionStorage.removeItem('username');
+    window.location.href = window.location.origin;
+    window.location.reload();
+    alert("Logging out "+username+"...")
+  }
+  else {
+    alert("The user could not be logged out.")
+  }
+};
+
+let checkSession = () => {
+            let curr_user = sessionStorage.getItem("username");
+
+            if (curr_user && curr_user !== "") {
+                document.getElementById("loginlogout").innerHTML = 
+                '<span class="homepage_links">' + curr_user +'</span>' +
+                '<a class="homepage_links" onclick="logout()" href="/">Logout</a>';
+            } else {
+                document.getElementById("loginlogout").innerHTML = 
+                '<a class="homepage_links text-white px-4" href="/login">Login</a>'+
+                '<a class="homepage_links text-white px-4"  href="/register">Register</a>';
+            }
+        }
+</script>
+</head>
+<body onload="checkSession()" class="bg-gray-100">
+    <header class="bg-blue-900 text-white p-4">
+        <nav class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="text-xl font-bold">DealerShips</div>
+            <div class="ml-auto flex items-center">
+                <a href="#" class="text-white px-4 active-nav">Home</a>
+                <a href="/about" class="text-white px-4">About Us</a>
+                <a href="/contact" class="text-white px-4">Contact Us</a>
+                <div class="nav-divider"></div> 
+                <div id="loginlogout" class="loginlink"></div> 
+            </div>
+        </nav>
+    </header>
+    <main class="max-w-6xl mx-auto mt-8 p-4 bg-white rounded shadow-lg">
+        <h1 class="text-2xl font-semibold mb-4">Welcome to Best Cars dealership, home to the best cars in North America.</h1>
+        <p>We deal in sale of domestic and imported cars at reasonable prices.</p>
+        <a href="/dealers"><button class="bg-blue-900 text-white px-4 py-2 rounded-md mt-4">View Dealerships</button></a>
+    </main>
+</body>
+</html>
